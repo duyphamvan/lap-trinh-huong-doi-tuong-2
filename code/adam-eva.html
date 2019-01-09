@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#adam, #eva{
+			width: 200px;
+			height: 50px;
+			font-size: 20px;
+			background-color: lightblue;
+		}
+		#container{
+			width: 100%;
+			margin-top: 200px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<input type="button" value="Adam Eat" id="adam" 
+		onclick="adamEat();" >
+		<input type="button" value="Eva Eat" id="eva" onclick="evaEat();">
+	</div>
+	<script>;
+
+		
+		function adamEat() {
+			adam.eat(apple);
+			alert('Cắn lần ' + apple.times + ' miếng quả táo còn ' + apple.weight + ' kg ' + adam.name + ' nặng  ' + adam.weight + ' kg');
+		}
+		function evaEat() {
+			eva.eat(apple);
+			alert('Cắn lần ' + apple.times + ' miếng quả táo còn ' + apple.weight + ' kg ' + eva.name + ' nặng  ' + eva.weight + ' kg');
+		}
+		function Apple() {
+			this.weight = 10;
+			this.times = 0;
+		}
+
+		Apple.prototype.eatApple = function () {
+			this.weight--;
+			this.times++;
+			
+		};
+
+		function Human(name, gender, weight) {
+			this.name = name;
+			this.gender = gender;
+			this.weight = weight;
+			this.speaking = function () {
+				console.log('Adam va Eva la doi ban than')
+			};
+		}
+	
+		Human.prototype.eat = function (apple) {
+			if (apple.weight > 0) {
+			     this.weight += 1;
+			     apple.eatApple();
+			}
+
+
+		};
+						    
+		var apple = new Apple();
+		var adam = new Human('Adam','Male', 50);
+		var eva = new Human('Eva','Famale', 50);
+		adam.speaking();
+		
+		
+	</script>
+</body>
+</html>

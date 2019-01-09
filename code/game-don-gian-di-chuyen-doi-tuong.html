@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="game"></div>
+	<script>
+
+		function Riven(image, top, left, size,speed) {
+			this.image = image;
+			this.top = top;
+			this.left = left;
+			this.size = size;
+			this.speed = speed;
+
+			this.getRivenElement = function () {
+				return '<image width = "' + this.size + '"'+ 'height = "' + this.size + '"' + 'src = "' + this.image + '"' + 'style = " top:' + this.top + 'px; left:' + this.left + 'px; position: absolute;" />';
+			};
+
+			this.moveRight = function () {
+				this.left+= this.speed;
+
+			};
+			
+			this.moveLeft = function () {
+				this.left-= this.speed;
+
+			};
+			
+			this.moveBottom = function () {
+				this.top+= this.speed;
+
+			};
+			
+			this.moveTop = function () {
+				this.top-= this.speed;
+
+			};
+
+
+		}
+
+		var riven = new Riven('pikachu.png', 20, 30, 200, 200);
+
+		function start() {
+			if (riven.left < window.innerWidth && riven.top ===20) {
+			   	riven.moveRight();
+			}
+			
+			if (riven.left> window.innerWidth - riven.size && riven.top < window.innerHeight - riven.size) {
+				riven.moveBottom();
+			}
+
+			if (riven.top > window.innerHeight - riven.size && riven.left > 0) {
+				riven.moveLeft();
+			}
+
+			if (riven.top < window.innerHeight&& riven.left < riven.speed) {
+				riven.moveTop();
+			}
+/*
+			if (riven.left < 1000 && riven.top === 20) {
+			   	riven.moveRight();
+			}
+			
+			if (riven.left> 800 && riven.top >0) {
+				riven.moveBottom();
+			}
+
+			if (riven.top > 400 && riven.left > 0) {
+				riven.moveLeft();
+			}
+
+			if (riven.top < 1000 && riven.left < 100) {
+				riven.moveTop();
+			}*/
+
+
+			document.getElementById('game').innerHTML = riven.getRivenElement();
+  			
+  			var a = setTimeout(start, 500);
+
+  			
+		}
+		start();
+
+	</script>
+</body>
+</html>
